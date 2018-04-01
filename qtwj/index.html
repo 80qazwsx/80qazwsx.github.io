@@ -1,60 +1,307 @@
-<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>感谢页面</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">	
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<title>抽奖啦</title>
 	<style type="text/css">
-		body{
+		body,h2,p,h4{
 			margin:0;
-			background:#eee;
 		}
-		header{
-		    width:100%;
-		    height:70px;
-		    position:fixed;
-		    left:0;
-		    top:0;
-		    background:#1EA0FA;
-		    color:#fff;
-		    text-align:center;
-		}
-		.thanks_sentence{
-			padding:20px;
-			width:60%;
-			font-size:20px;
-			margin:100px auto;
-			text-align: center;
-			background:#fff;
-			border:1px solid #ddd;
-		}
-		footer{
-			position:absolute;
-			left:0;
-			bottom:0;
-			width:100%;
-			background:#aaa;
-			color:#fff;
+		#lottery{
 			text-align:center;
 		}
-		footer p{
-		    padding:0;margin:0;
+		.header{
+			height:50px;
+			background:#1e9ffa;
+			margin-bottom:6px;
 		}
+		.header h2{
+			/*text-align:center;*/
+			font:bold 20px/50px "微软雅黑";
+			color:#fff;
+		}
+		div.thanks{
+			height:64px;
+			margin-bottom:7px;
+			border-bottom:1px dotted #c4c4c4;
+		}
+		.thanks h4{
+			font:16px/64px "微软雅黑";
+			color:#2b2c26;
+			/*text-align:center;*/
+		}
+		.for_good h4{
+			font:16px/30px "微软雅黑";
+			color:#f00;
+			/*text-align:center;*/
+		}
+		table{
+			padding:4px 0 0 4px;
+			width:242px;
+			height:242px;
+			background:#ffdc75;
+			margin-left:50%;
+			position:relative;
+			left:-121px;
+		}
+		table td{
+			display:inline-block;
+			width:72px;
+			height:72px;
+			margin:0 4px 4px 0;
+			background:#fff;
+			text-align:center;
+		}
+		table td p.reserive{
+			font:12px "微软雅黑";
+			margin-top:21px;
+			color:#d5533d;
+		}
+		table td p.thank_join{
+			font:12px/72px "微软雅黑";
+			color:#ef9350;
+		}
+		table td.button{
+			background:#ffe198;
+		}
+		table td button{
+			border:none;
+			width:68px;height:38px;
+			margin-top:18px;
+			background: #e6771b;
+			border-radius:15px;
+			font:14px "微软雅黑";
+			color:#fff;
+		}
+		table td button:hover{
+			cursor:pointer;
+		}
+
+		#lottery table td.active{
+			color: red;
+			background-color: yellow;
+		}
+		#lottery table td button.disabled{
+			cursor:auto;
+		}
+
+		/* 定义模态对话框外面的覆盖层样式 */
+		#modal-overlay {
+		     visibility: hidden;    
+		     position: absolute;   /* 使用绝对定位或固定定位  */
+		     left: 0px;    
+		     top: 0px;
+		     width:100%;
+		     height:100%;
+		     text-align:center;
+		     z-index: 1000;
+		     background-color: #333; 
+		     opacity: 0.8;   /* 背景半透明 */
+		}
+		/* 模态框样式 */
+		.modal-data{
+			 width:300px;
+		     margin: 100px auto;
+		     background-color: #fff;
+		     border:1px solid #000;
+		     padding:15px;
+		     text-align:center;
+		}
+		/*#modal-overlay .display_none{
+			display:none;
+		}*/
 	</style>
 </head>
 <body>
-	<header>
-	    <h2>七天连锁酒店满意度调查问卷</h2>
-	</header><br><br><br><br>
-	<div class="thanks_sentence">
-		<p>
-			<mark>感谢您对我们酒店工作的支持，我们会根据您的宝贵建议提出针对性的改善</mark>
-		</p>
+<div id="lottery">
+	<div class="header">
+		<h2>七天连锁酒店满意度调查问卷</h2>
 	</div>
-	 <footer>
-	        <section>
-	             <p>Copyright © 2018</p>
-	             <p>https://github.com/80qazwsx/80qazwsx.github.io All rights</p>
-	        </section>
-	</footer>
+	<div class="thanks">
+		<h4>您的答卷已经提交，感谢您的参与！</h4>
+	</div>
+	<div class="for_good">
+		<h4>恭喜您获得一次抽奖机会！</h4>
+	</div>
+	<table>
+		<tr>
+			<td class="lottery-unit lottery-unit-0">
+				<p class="reserive">4万免息红包</p>
+			</td>
+			<td class="lottery-unit lottery-unit-1"><p class="thank_join">感谢参与</p></td>
+			<td class="lottery-unit lottery-unit-2"><p class="reserive">获得1000元红包</p></td>
+		</tr>
+		<tr>
+			<td class="lottery-unit lottery-unit-7"><p class="thank_join">感谢参与</p></td>
+			<td class="button"><button>开始</button></td>
+			<td class="lottery-unit lottery-unit-3"><p class="thank_join">感谢参与</p></td>
+		</tr>
+		<tr>
+			<td class="lottery-unit lottery-unit-6"><p class="reserive">10万元意外保障</p></td>
+			<td class="lottery-unit lottery-unit-5"><p class="thank_join">感谢参与</p></td>
+			<td class="lottery-unit lottery-unit-4"><p class="reserive">100万元出行保障险</p></td>
+		</tr>
+	</table>
+</div>
+<!-- 模态框的样式 -->
+ <div id="modal-overlay"> 
+	<div class="modal-data">		
+	   <p>恭喜您获取奖励，请点击关闭进行跳转。</p>
+	    <p><a href="">关闭</a></p>
+	</div>
+</div>
+<script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+
+<script type="text/javascript">
+	var ide;
+	var lottery={
+		index:0,	//当前转动到哪个位置
+		count:0,	//总共有多少个位置
+		timer:0,	//setTimeout的ID，用clearTimeout清除
+		speed:200,	//初始转动速度
+		times:0,	//转动次数
+		cycle:50,	//转动基本次数：即至少需要转动多少次再进入抽奖环节
+		prize:-1,	//中奖位置
+		init:function(id){
+			if ($("#"+id).find(".lottery-unit").length>0) {
+				$lottery = $("#"+id);
+				$units = $lottery.find(".lottery-unit");
+				this.obj = $lottery;
+				this.count = $units.length;
+				// $lottery.find(".lottery-unit-"+this.index).addClass("active");
+				// console.log(".lottery-unit-"+this.index);
+
+			};
+		},
+		roll:function(){
+			var index = this.index;
+			// console.log(index);
+			var count = this.count;
+			var lottery = this.obj;
+			$(lottery).find(".lottery-unit-"+index).removeClass("active");
+			index += 1;
+			if (index>count-1) {
+				index = 0;
+			};
+			$(lottery).find(".lottery-unit-"+index).addClass("active");
+			// console.log(".lottery-unit-"+index);
+
+			this.index=index;
+			// return false;
+			return index;
+		},
+		stop:function(index){
+			this.prize=index;
+			return false;
+		}
+	};
+
+	function roll(){
+		lottery.times += 1;
+		ide=lottery.roll();
+		// console.log(ide);
+		if (lottery.times > lottery.cycle+10 && lottery.prize==lottery.index) {
+			clearTimeout(lottery.timer);
+			lottery.prize=-1;
+			lottery.times=0;
+			click=false;
+		}else{
+			if (lottery.times<lottery.cycle) {
+				lottery.speed -= 10;
+			}else if(lottery.times==lottery.cycle) {
+				var index = Math.random()*(lottery.count)|0;
+				// var index = 0.5*(lottery.count)|0;
+				lottery.prize = index;		
+			}else{
+				if (lottery.times > lottery.cycle+10 && ((lottery.prize==0 && lottery.index==7) || lottery.prize==lottery.index+1)) {
+					lottery.speed += 110;
+				}else{
+					lottery.speed += 20;
+				}
+			}
+			if (lottery.speed<40) {
+				lottery.speed=40;
+			};
+			//console.log(lottery.times+'^^^^^^'+lottery.speed+'^^^^^^^'+lottery.prize);
+			lottery.timer = setTimeout(roll,lottery.speed);
+			// console.log(cc);
+			// console.log(lottery.timer);
+		}
+		
+	}
+	lottery.init('lottery');
+	$("#lottery button").click(function(){
+		var click=false;
+
+		if (click) {
+			return false;
+		}else{
+			lottery.speed=100;
+			roll();
+
+			$("#lottery button").attr("disabled","true");
+			$("#lottery button").addClass('disabled');
+			setTimeout(function(){
+				// 模拟模态框，并进行跳转
+				overlay(ide);
+			},7000);
+			
+		}
+	});
+	// 模态框函数
+	var e1 = document.getElementById('modal-overlay');			
+	var a=e1.getElementsByTagName('a')[0];
+	// var content=e1.getElementsByClassName('content');
+	// console.log(content);
+	a.addEventListener('click',(e)=>{
+		e.preventDefault();
+		overlay(ide);	
+	})
+	function overlay(ide){
+	    if(e1.style.visibility == "visible"  ){
+		    e1.style.visibility =  "hidden";
+		    switch(ide){
+			case 0:
+				console.log(0);
+				window.location="https://cdn-daikuan.360jie.com.cn/dir_mkteditor/activity/12msqhb/mobile/1.2.0/12msqhb.html?utm_campaign=12mianshouqihb_201711&ntm_medium=hongbao1&utm_source=dsmdsp&utm_content=hongb6";
+				break;
+			case 1:
+			  console.log(1);
+			  // window.location="C:/Users/Administrator/Desktop/七天调查问卷/index.html";
+			  break;
+			case 2:
+			  console.log(2);
+			  window.location="https://www.qhfax.com/wjx/toWeChatRegister?cChannel=wjx17&keywords=10";
+			  break;
+			case 3:
+			 	console.log(3);
+			 	// window.location="C:/Users/Administrator/Desktop/七天调查问卷/index.html";
+			  	break;
+			case 4:
+				console.log(4);
+				// window.location="https://p.viplex.cn/html/cnbaoxian/?frm=x03&_tkpn_=LV5PQW1CTUdAFVBakQcSEGJHTCReVwo0&tcode=743";
+				break;
+			case 5:
+				console.log(5);
+				// window.location="C:/Users/Administrator/Desktop/七天调查问卷/index.html";
+				break;
+			case 6:
+				console.log(6);
+				// window.location="http://cpic.zhunxiao.com.cn/";
+			 	break;
+			case 7:
+				console.log(7);
+				// window.location="C:/Users/Administrator/Desktop/七天调查问卷/index.html";
+				break;
+			}
+	    }
+	    else{
+
+	      e1.style.visibility =  "visible";
+	    }
+	}
+</script>
+
 </body>
 </html>
