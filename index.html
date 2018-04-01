@@ -4,33 +4,20 @@
     <meta charset="utf-8">
     <meta http-equiv="cache-control" content="no-cache">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-     <meta name="keywords" content="七天、调查问卷、客户满意度、客户投诉建议、酒店改进调查、酒店服务调查、酒店升级调查">
+    <meta name="keywords" content="七天、调查问卷、客户满意度、客户投诉建议、酒店改进调查、酒店服务调查、酒店升级调查">
     <meta name="description" content="七天、调查问卷、客户满意度、客户投诉建议、酒店改进调查、酒店服务调查、酒店升级调查">
     <title>七天问卷型调查制作</title>
 </head>
     <style type="text/css">
+        body{
+            margin:0;
+            background:#eee;
+        }
         html{
             font-size: 16px;
             font-family:"微软雅黑";
             color:#333;
             font-weight:bold;
-        }
-        body,p{
-            margin:0;
-        }
-        body{
-            background:#eee;
-        }
-        .daojishi{
-            float:right;
-            z-index:1000;
-            display:inline-block;
-/*             width:280px; */
-            font:14px "微软雅黑";
-        }
-        #timer{
-            color:red;
-            word-spacing:2px;
         }
         header{
             width:100%;
@@ -55,13 +42,15 @@
             background:url("./qtwj/img/check_blue.jpeg") -1px -1px;
             background-size: 15px;
         }
-        section{
+        /*section{
             width:80%;
             margin:0 auto;
-        }
+        }*/
         .selection{
-            margin-bottom:5px;
+            box-sizing:border-box;
+            margin:5px;
             padding-bottom:25px;
+            overflow:hidden;
             /*border-bottom:1px solid #ddd;*/
         }
         .selection span{
@@ -85,16 +74,16 @@
         }
         button{
             background:#23aace;
-            width:90%;
+            width:100%;
             height:35px;
-            margin:0 5%;
+            overflow:hidden;
             font-size:20px;
             font-weight:bold;
             color:#eee;
             cursor:pointer;
         }
         
-         footer{
+        footer{
             margin-top:50px;
             width:100%;
             background:#aaa;
@@ -105,46 +94,13 @@
             padding:0;margin:0;
         }
     </style>
-    <script type="text/javascript">
-        // 倒计时
-        function leftTimer(){ 
-          var leftTime = new Date(); //计算剩余的毫秒数
-          var year=leftTime.getFullYear();
-          var month=parseInt(leftTime.getMonth())+1;
-          var days = leftTime.getDate(); //计算剩余的天数 
-          var hours = leftTime.getHours(); //计算剩余的小时 
-          var minutes = leftTime.getMinutes();//计算剩余的分钟 
-          var seconds = leftTime.getSeconds();//计算剩余的秒数 
-          year=checkTime(year);
-          month=checkTime(month);
-          days = checkTime(days); 
-          hours = checkTime(hours); 
-          minutes = checkTime(minutes); 
-          seconds = checkTime(seconds); 
-          var ival=setInterval("leftTimer()",1000); 
-          clearInterval(ival)
-          document.getElementById("timer").innerHTML =month+"月"+days+"号" + hours+"时" + minutes+"分"+seconds+"秒";  
-          clearInterval(ival);
-        } 
-        function checkTime(i){ //将0-9的数字前面加上0，例1变为01 
-          if(i<10) 
-          { 
-            i = "0" + i; 
-          } 
-          return i; 
-        } 
-        leftTimer();
-        // 获得当前时间
-      
-    </script>
 <body>
     <header>
         <h2>七天连锁酒店满意度调查问卷</h2>
     </header><br><br><br><br>
-    <!-- //倒计时 -->
-    <p class="daojishi">时间&nbsp;:&nbsp;<span id="timer"></span></p> 
     <section class="clear">
-        <form method="" action="">
+
+        <form action="">
         <div class="selection">
             <h4>1. 您的性别：</h4>
             <span>
@@ -362,17 +318,14 @@
     <footer>
         <section>
              <p>Copyright © 2018</p>
-             <p>https://github.com/80qazwsx/80qazwsx.github.io All rights reserved</p>
+             <p>https://github.com/80qazwsx/80qazwsx.github.io All rights</p>
         </section>
     </footer>
+    </section>
 
-
-    <script src="./lottery/jquery-1.8.3.min.js"></script>
+    <script src="./qtwj/jquery-1.8.3.min.js"></script>
     <script type="text/javascript">
-        
- 
-        //表单处理
-        var div=$('section div');
+        var div=$('div');
         $('button')[0].addEventListener('click',function(){
             for(var i=0;i<div.length;i++){
                 var input=$('.question'+i);
@@ -388,15 +341,14 @@
                         break;
                     }
                     else{
-                        unSelected(i+1);
+                        unSelected(div[i]);
                         return;
                     }
                 }
             }
             $('form').submit();
 
-            // window.location.href="C:/Users/Administrator/Desktop/七天调查问卷/lottery/新的抽奖页面.html";
-             window.location.href="./qtwj/index.html";
+            window.location.href="./qtwj/index.html";
         })
 
         /*定义一个未选中的元素时提示的语句
@@ -404,18 +356,12 @@
             2 为该div添加红色边框及提示语句说：您需要填完全部选项后才可提交。 
          */
         function unSelected(div){
-            // $(div).addClass('border');
-            // var tip=document.createElement('p');
-            // tip.innerHTML="提示：您需要填完全部选项后才可提交";
-            // $(tip).addClass('p')                        
-            // div.appendChild(tip);
-    
-    
-            // console.log(div);
-            alert("亲，您第"+div+"个题未有填写，您需要填写完整后才能够提交");
+            $(div).addClass('border');
+            var tip=document.createElement('p');
+            tip.innerHTML="提示：您需要跳完全部选项后才可提交";
+            $(tip).addClass('p')                        
+            div.appendChild(tip);
         }
-        
-        
     </script>
 </body>
 </html>
