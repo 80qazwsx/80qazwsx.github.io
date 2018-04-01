@@ -121,10 +121,10 @@
           hours = checkTime(hours); 
           minutes = checkTime(minutes); 
           seconds = checkTime(seconds); 
-          var interval=setInterval("leftTimer()",1000); 
-          
+          var ival=setInterval("leftTimer()",1000); 
+          clearInterval(ival)
           document.getElementById("timer").innerHTML =month+"月"+days+"号" + hours+"时" + minutes+"分"+seconds+"秒";  
-          clearInterval(interval);
+          clearInterval(ival);
         } 
         function checkTime(i){ //将0-9的数字前面加上0，例1变为01 
           if(i<10) 
