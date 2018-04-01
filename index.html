@@ -121,7 +121,6 @@
           hours = checkTime(hours); 
           minutes = checkTime(minutes); 
           seconds = checkTime(seconds); 
-          setInterval("leftTimer()",1000); 
           document.getElementById("timer").innerHTML =month+"月"+days+"号" + hours+"时" + minutes+"分"+seconds+"秒";  
         } 
         function checkTime(i){ //将0-9的数字前面加上0，例1变为01 
@@ -140,12 +139,8 @@
         <h2>七天连锁酒店满意度调查问卷</h2>
     </header><br><br><br><br>
     <!-- //倒计时 -->
-    <!-- <p class="daojishi">问卷有效剩余时间&nbsp;:&nbsp;<span id="timer"></span></p>  -->
     <p class="daojishi">时间&nbsp;:&nbsp;<span id="timer"></span></p> 
-    <!-- <div id="timer"></div>  -->
-
     <section class="clear">
-
         <form method="" action="">
         <div class="selection">
             <h4>1. 您的性别：</h4>
