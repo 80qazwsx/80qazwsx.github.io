@@ -121,6 +121,7 @@
           hours = checkTime(hours); 
           minutes = checkTime(minutes); 
           seconds = checkTime(seconds); 
+          setTimeout("leftTimer()",1000); 
           document.getElementById("timer").innerHTML =month+"月"+days+"号" + hours+"时" + minutes+"分"+seconds+"秒";  
         } 
         function checkTime(i){ //将0-9的数字前面加上0，例1变为01 
