@@ -19,6 +19,18 @@
             color:#333;
             font-weight:bold;
         }
+        .daojishi{
+            float:right;
+            z-index:1000;
+            display:inline-block;
+            width:150px;
+            font:14px "微软雅黑";
+        }
+        #timer{
+            display:inline-block;
+            color:red;
+            word-spacing:2px;
+        }
         header{
             width:100%;
             height:70px;
@@ -98,8 +110,8 @@
     <header>
         <h2>七天连锁酒店满意度调查问卷</h2>
     </header><br><br><br><br>
+     <p class="daojishi">时间&nbsp;:&nbsp;<span id="timer"></span></p> 
     <section class="clear">
-
         <form action="">
         <div class="selection">
             <h4>1. 您的性别：</h4>
@@ -325,6 +337,32 @@
 
      <script src="./lottery/jquery-1.8.3.min.js"></script>
     <script type="text/javascript">
+         function getNowFormatDate() {
+            var date = new Date();
+            var seperator1 = "-";
+            var seperator2 = ":";
+            var month = date.getMonth() + 1;
+            var strDate = date.getDate();
+            if (month >= 1 && month <= 9) {
+                month = "0" + month;
+            }
+            if (strDate >= 0 && strDate <= 9) {
+                strDate = "0" + strDate;
+            }
+            // var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+            //         + " " + date.getHours() + seperator2 + date.getMinutes()
+            //         + seperator2 + date.getSeconds();
+            var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate;
+            return currentdate;
+        }
+        var nowTime=getNowFormatDate();
+        console.log(nowTime);
+        var span=document.createElement('span');
+        span.innerHTML=nowTime;
+        var sp=document.getElementById('timer');
+        console.log(sp);
+        sp.appendChild(span);
+                    
         var div=$('div');
         $('button')[0].addEventListener('click',function(){
             for(var i=0;i<div.length;i++){
