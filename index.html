@@ -4,20 +4,33 @@
     <meta charset="utf-8">
     <meta http-equiv="cache-control" content="no-cache">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="七天、调查问卷、客户满意度、客户投诉建议、酒店改进调查、酒店服务调查、酒店升级调查">
-    <meta name="description" content="七天、调查问卷、客户满意度、客户投诉建议、酒店改进调查、酒店服务调查、酒店升级调查">
+  <!--   <meta name="keywords" content="转盘，网盘，资源问答，问答，影评，社区，我嚓哩，嚓哩，百度网盘，百度云，网盘资源，网盘下载，百度网盘搜索，网盘搜索引擎，资源下载">
+    <meta name="description" content="去转盘网，网盘搜索引擎，资源问答平台，我嚓哩，嚓哩，常用网盘资源搜索，百度网盘、网盘资源分类下载，最新资源搜索下载，可以分享网盘资源、请求网盘资源的网盘搜索引擎。"> -->
     <title>七天问卷型调查制作</title>
 </head>
     <style type="text/css">
-        body{
-            margin:0;
-            background:#eee;
-        }
         html{
             font-size: 16px;
             font-family:"微软雅黑";
             color:#333;
             font-weight:bold;
+        }
+        body,p{
+            margin:0;
+        }
+        body{
+            background:#eee;
+        }
+        .daojishi{
+            float:right;
+            z-index:1000;
+            display:inline-block;
+            width:280px;
+            font:14px "微软雅黑";
+        }
+        #timer{
+            color:red;
+            word-spacing:2px;
         }
         header{
             width:100%;
@@ -39,18 +52,16 @@
             margin:0 5% 0 0;
         }
        input[type="radio" ]:checked {
-            background:url("./qtwj/img/check_blue.jpeg") -1px -1px;
+            background:url("./img/check_blue.jpeg") -1px -1px;
             background-size: 15px;
         }
-        /*section{
+        section{
             width:80%;
             margin:0 auto;
-        }*/
+        }
         .selection{
-            box-sizing:border-box;
-            margin:5px;
+            margin-bottom:5px;
             padding-bottom:25px;
-            overflow:hidden;
             /*border-bottom:1px solid #ddd;*/
         }
         .selection span{
@@ -74,16 +85,16 @@
         }
         button{
             background:#23aace;
-            width:100%;
+            width:90%;
             height:35px;
-            overflow:hidden;
+            margin:0 5%;
             font-size:20px;
             font-weight:bold;
             color:#eee;
             cursor:pointer;
         }
         
-        footer{
+         footer{
             margin-top:50px;
             width:100%;
             background:#aaa;
@@ -94,24 +105,59 @@
             padding:0;margin:0;
         }
     </style>
+    <script type="text/javascript">
+        // 倒计时
+        function leftTimer(){ 
+          var leftTime = new Date(); //计算剩余的毫秒数
+          var year=leftTime.getFullYear();
+          var month=parseInt(leftTime.getMonth())+1;
+          var days = leftTime.getDate(); //计算剩余的天数 
+          var hours = leftTime.getHours(); //计算剩余的小时 
+          var minutes = leftTime.getMinutes();//计算剩余的分钟 
+          var seconds = leftTime.getSeconds();//计算剩余的秒数 
+          year=checkTime(year);
+          month=checkTime(month);
+          days = checkTime(days); 
+          hours = checkTime(hours); 
+          minutes = checkTime(minutes); 
+          seconds = checkTime(seconds); 
+          setInterval("leftTimer()",1000); 
+          document.getElementById("timer").innerHTML =month+"月"+days+"号" + hours+"时" + minutes+"分"+seconds+"秒";  
+        } 
+        function checkTime(i){ //将0-9的数字前面加上0，例1变为01 
+          if(i<10) 
+          { 
+            i = "0" + i; 
+          } 
+          return i; 
+        } 
+        leftTimer();
+        // 获得当前时间
+      
+    </script>
 <body>
     <header>
         <h2>七天连锁酒店满意度调查问卷</h2>
     </header><br><br><br><br>
+    <!-- //倒计时 -->
+    <!-- <p class="daojishi">问卷有效剩余时间&nbsp;:&nbsp;<span id="timer"></span></p>  -->
+    <p class="daojishi">时间&nbsp;:&nbsp;<span id="timer"></span></p> 
+    <!-- <div id="timer"></div>  -->
+
     <section class="clear">
 
-        <form action="">
+        <form method="post" action="C:/Users/Administrator/Desktop/七天调查问卷/lottery/index.html">
         <div class="selection">
             <h4>1. 您的性别：</h4>
             <span>
-                男 <input type="radio" class="question0" name="Sex" value="male" />
+                男 <input type="radio" class="question0" checked name="Sex" value="male" />
                 女 <input type="radio" class="question0" name="Sex" value="female" />
             </span>
         </div>
         <div class="selection">
             <h4>2. 您的年龄段：</h4>
             <span>
-                20岁以下 <input type="radio" class="question1" name="feelGood" value="good">
+                20岁以下 <input type="radio" class="question1" name="feelGood" checked="checked" value="good">
                 20~40岁 <input type="radio" class="question1" name="feelGood" value="is_ok">
                 40~60岁 <input type="radio" class="question1" name="feelGood" value="not_bad">
                 60岁以上 <input type="radio" class="question1" name="feelGood" value="bad">
@@ -120,7 +166,7 @@
         <div class="selection">
             <h4>3. 您的月工资水平是多少？</h4>
             <span>
-                3000元以下 <input type="radio" class="question2" name="enviroment" value="good">
+                3000元以下 <input type="radio" class="question2" name="enviroment" checked="checked" value="good">
                 3000~6000元 <input type="radio" class="question2" name="enviroment" value="is_ok">
                 6000~10000元 <input type="radio" class="question2" name="enviroment" value="not_bad">
                 10000元以上 <input type="radio" class="question2" name="enviroment" value="bad">
@@ -129,7 +175,7 @@
         <div class="selection">
             <h4>4. 这是您第几次入住我们酒店？</h4>
             <span>
-                第一次 <input type="radio" class="question3" name="into_living" value="first">
+                第一次 <input type="radio" class="question3" name="into_living" checked="checked" value="first">
                 第二次 <input type="radio" class="question3" name="into_living" value="second">
                 第三次及以上 <input type="radio" class="question3" name="into_living" value="third_up">
             </span>
@@ -137,14 +183,14 @@
         <div class="selection">
             <h4>5. 入住我们酒店的原因是什么？</h4>
             <span>
-                个人原因 <input type="radio" class="question4" name="into_reason" value="personal">
+                个人原因 <input type="radio" class="question4" name="into_reason" checked="checked" value="personal">
                 工作原因 <input type="radio" class="question4" name="into_reason" value="for_working">
             </span>
         </div>
         <div class="selection">
             <h4>6. 您对我们就先卫生条件感觉如何？</h4>
             <span>
-                很不满意 <input type="radio" class="question5" name="is_clear" value="1">
+                很不满意 <input type="radio" class="question5" name="is_clear" checked="checked" value="1">
                 不满意 <input type="radio" class="question5" name="is_clear" value="2">
                 一般  <input type="radio" class="question5" name="is_clear" value="3">
                 满意 <input type="radio" class="question5" name="is_clear" value="4">
@@ -154,7 +200,7 @@
         <div class="selection">
             <h4>7. 您对我们酒店设备条件感觉如何？</h4>
             <span>
-                很不满意 <input type="radio" class="question6" name="device_feeling" value="1">
+                很不满意 <input type="radio" class="question6" name="device_feeling" checked="checked" value="1">
                 不满意 <input type="radio" class="question6" name="device_feeling" value="2">
                 一般  <input type="radio" class="question6" name="device_feeling" value="3">
                 满意 <input type="radio" class="question6" name="device_feeling" value="4">
@@ -164,7 +210,7 @@
         <div class="selection">
             <h4>8. 您对我们酒店周边环境条件感觉如何？</h4>
             <span>
-                很不满意 <input type="radio" class="question7" name="around_enviroment_feeling" value="1">
+                很不满意 <input type="radio" class="question7" name="around_enviroment_feeling" checked="checked" value="1">
                 不满意 <input type="radio" class="question7" name="around_enviroment_feeling" value="2">
                 一般  <input type="radio" class="question7" name="around_enviroment_feeling" value="3">
                 满意 <input type="radio" class="question7" name="around_enviroment_feeling" value="4">
@@ -174,7 +220,7 @@
         <div class="selection">
             <h4>9. 您对我们酒店交通条件感觉如何？</h4>
             <span>
-                很不满意 <input type="radio" class="question8" name="transition" value="1">
+                很不满意 <input type="radio" class="question8" name="transition" checked="checked" value="1">
                 不满意 <input type="radio" class="question8" name="transition" value="2">
                 一般  <input type="radio" class="question8" name="transition" value="3">
                 满意 <input type="radio" class="question8" name="transition" value="4">
@@ -184,7 +230,7 @@
         <div class="selection">
             <h4>10. 您对我们酒店员工服务态度感觉如何？</h4>
             <span>
-                很不满意 <input type="radio" class="question9" name="server_feeling" value="1">
+                很不满意 <input type="radio" class="question9" name="server_feeling" checked="checked" value="1">
                 不满意 <input type="radio" class="question9" name="server_feeling" value="2">
                 一般  <input type="radio" class="question9" name="server_feeling" value="3">
                 满意 <input type="radio" class="question9" name="server_feeling" value="4">
@@ -194,7 +240,7 @@
         <div class="selection">
             <h4>11. 您对我们酒店员工业务技能感觉如何？</h4>
             <span>
-                很不满意 <input type="radio" class="question6" name="skilling" value="1">
+                很不满意 <input type="radio" class="question6" name="skilling" checked="checked" value="1">
                 不满意 <input type="radio" class="question6" name="skilling" value="2">
                 一般  <input type="radio" class="question6" name="skilling" value="3">
                 满意 <input type="radio" class="question6" name="skilling" value="4">
@@ -204,7 +250,7 @@
         <div class="selection">
             <h4>12. 您对我们就先卫生条件感觉如何？</h4>
             <span>
-                很不满意 <input type="radio" class="question5" name="is_clear" value="1">
+                很不满意 <input type="radio" class="question5" name="is_clear" checked="checked" value="1">
                 不满意 <input type="radio" class="question5" name="is_clear" value="2">
                 一般  <input type="radio" class="question5" name="is_clear" value="3">
                 满意 <input type="radio" class="question5" name="is_clear" value="4">
@@ -214,7 +260,7 @@
            <div class="selection">
             <h4>13. 您对我们酒店主动询问客户需求感觉如何？</h4>
             <span>
-                很不满意 <input type="radio" class="question5" name="ask_server" value="1">
+                很不满意 <input type="radio" class="question5" name="ask_server" checked="checked" value="1">
                 不满意 <input type="radio" class="question5" name="ask_server" value="2">
                 一般  <input type="radio" class="question5" name="ask_server" value="3">
                 满意 <input type="radio" class="question5" name="ask_server" value="4">
@@ -224,7 +270,7 @@
            <div class="selection">
             <h4>14. 您对我们酒店在替客户考虑方面感觉如何？</h4>
             <span>
-                很不满意 <input type="radio" class="question5" name="conserent" value="1">
+                很不满意 <input type="radio" class="question5" name="conserent" checked="checked" value="1">
                 不满意 <input type="radio" class="question5" name="conserent" value="2">
                 一般  <input type="radio" class="question5" name="conserent" value="3">
                 满意 <input type="radio" class="question5" name="conserent" value="4">
@@ -234,7 +280,7 @@
            <div class="selection">
             <h4>15. 您对我们酒店在鼓励客户提供建议方面感觉如何？</h4>
             <span>
-                很不满意 <input type="radio" class="question5" name="advice" value="1">
+                很不满意 <input type="radio" class="question5" name="advice" checked="checked" value="1">
                 不满意 <input type="radio" class="question5" name="advice" value="2">
                 一般  <input type="radio" class="question5" name="advice" value="3">
                 满意 <input type="radio" class="question5" name="advice" value="4">
@@ -244,7 +290,7 @@
            <div class="selection">
             <h4>16. 您对我们酒店在鼓励客户抱怨方面感觉如何？</h4>
             <span>
-                很不满意 <input type="radio" class="question5" name="conpaint" value="1">
+                很不满意 <input type="radio" class="question5" name="conpaint" checked="checked" value="1">
                 不满意 <input type="radio" class="question5" name="conpaint" value="2">
                 一般  <input type="radio" class="question5" name="conpaint" value="3">
                 满意 <input type="radio" class="question5" name="conpaint" value="4">
@@ -254,7 +300,7 @@
            <div class="selection">
             <h4>17. 您对我们酒店解决客户问题的及时性及效果感觉如何？</h4>
             <span>
-                很不满意 <input type="radio" class="question5" name="available" value="1">
+                很不满意 <input type="radio" class="question5" name="available" checked="checked" value="1">
                 不满意 <input type="radio" class="question5" name="available" value="2">
                 一般  <input type="radio" class="question5" name="available" value="3">
                 满意 <input type="radio" class="question5" name="available" value="4">
@@ -264,7 +310,7 @@
            <div class="selection">
             <h4>18. 您对我们酒店性价比感觉如何？</h4>
             <span>
-                很不满意 <input type="radio" class="question5" name="is_cheaped" value="1">
+                很不满意 <input type="radio" class="question5" name="is_cheaped" checked="checked" value="1">
                 不满意 <input type="radio" class="question5" name="is_cheaped" value="2">
                 一般  <input type="radio" class="question5" name="is_cheaped" value="3">
                 满意 <input type="radio" class="question5" name="is_cheaped" value="4">
@@ -274,7 +320,7 @@
            <div class="selection">
             <h4>19. 您对我们酒店总体满意度如何？</h4>
             <span>
-                很不满意 <input type="radio" class="question5" name="feel_well" value="1">
+                很不满意 <input type="radio" class="question5" name="feel_well" checked="checked" value="1">
                 不满意 <input type="radio" class="question5" name="feel_well" value="2">
                 一般  <input type="radio" class="question5" name="feel_well" value="3">
                 满意 <input type="radio" class="question5" name="feel_well" value="4">
@@ -284,7 +330,7 @@
            <div class="selection">
             <h4>20. 下一次您还愿意住我们酒店吗？</h4>
             <span>
-                很不愿意 <input type="radio" class="question5" name="living_again" value="1">
+                很不愿意 <input type="radio" class="question5" name="living_again" checked="checked" value="1">
                 不愿意 <input type="radio" class="question5" name="living_again" value="2">
                 看心情  <input type="radio" class="question5" nameliving_againar" value="3">
                 愿意 <input type="radio" class="question5" name="living_again" value="4">
@@ -294,7 +340,7 @@
            <div class="selection">
             <h4>21. 您会对周边的人宣传我们酒店的优点吗</h4>
             <span>
-                很不愿意 <input type="radio" class="question5" name="benefit" value="1">
+                很不愿意 <input type="radio" class="question5" name="benefit" checked="checked" value="1">
                 不愿意 <input type="radio" class="question5" name="benefit" value="2">
                 看心情  <input type="radio" class="question5" namebenefitar" value="3">
                 愿意 <input type="radio" class="question5" name="benefit" value="4">
@@ -304,7 +350,7 @@
            <div class="selection">
             <h4>22. 您会向朋友推荐我们酒店吗？</h4>
             <span>
-                很不愿意 <input type="radio" class="question5" name="recomend" value="1">
+                很不愿意 <input type="radio" class="question5" name="recomend" checked="checked" value="1">
                 不愿意 <input type="radio" class="question5" name="recomend" value="2">
                 看心情  <input type="radio" class="question5" namerecomendar" value="3">
                 愿意 <input type="radio" class="question5" name="recomend" value="4">
@@ -318,14 +364,17 @@
     <footer>
         <section>
              <p>Copyright © 2018</p>
-             <p>https://github.com/80qazwsx/80qazwsx.github.io All rights</p>
+             <p>https://github.com/80qazwsx/80qazwsx.github.io All rights reserved</p>
         </section>
     </footer>
-    </section>
 
-    <script src="./qtwj/jquery-1.8.3.min.js"></script>
+
+    <script src="./lottery/jquery-1.8.3.min.js"></script>
     <script type="text/javascript">
-        var div=$('div');
+        
+ 
+        //表单处理
+        var div=$('section div');
         $('button')[0].addEventListener('click',function(){
             for(var i=0;i<div.length;i++){
                 var input=$('.question'+i);
@@ -341,14 +390,15 @@
                         break;
                     }
                     else{
-                        unSelected(div[i]);
+                        unSelected(i+1);
                         return;
                     }
                 }
             }
             $('form').submit();
 
-            window.location.href="./qtwj/index.html";
+            // window.location.href="C:/Users/Administrator/Desktop/七天调查问卷/lottery/新的抽奖页面.html";
+             window.location.href="./qtwj/index.html";
         })
 
         /*定义一个未选中的元素时提示的语句
@@ -356,12 +406,18 @@
             2 为该div添加红色边框及提示语句说：您需要填完全部选项后才可提交。 
          */
         function unSelected(div){
-            $(div).addClass('border');
-            var tip=document.createElement('p');
-            tip.innerHTML="提示：您需要跳完全部选项后才可提交";
-            $(tip).addClass('p')                        
-            div.appendChild(tip);
+            // $(div).addClass('border');
+            // var tip=document.createElement('p');
+            // tip.innerHTML="提示：您需要填完全部选项后才可提交";
+            // $(tip).addClass('p')                        
+            // div.appendChild(tip);
+    
+    
+            // console.log(div);
+            alert("亲，您第"+div+"个题未有填写，您需要填写完整后才能够提交");
         }
+        
+        
     </script>
 </body>
 </html>
