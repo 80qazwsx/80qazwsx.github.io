@@ -356,11 +356,12 @@
             2 为该div添加红色边框及提示语句说：您需要填完全部选项后才可提交。 
          */
         function unSelected(div){
-            $(div).addClass('border');
+<!--             $(div).addClass('border');
             var tip=document.createElement('p');
             tip.innerHTML="提示：您需要跳完全部选项后才可提交";
             $(tip).addClass('p')                        
-            div.appendChild(tip);
+            div.appendChild(tip); -->
+            alert("亲，您第"+div+"个题未有填写，您需要填写完整后才能够提交");
         }
     </script>
 </body>
